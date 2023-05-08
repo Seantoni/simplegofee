@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleGo Fee Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SimpleGo Fee Calculator</h1>
+    <form id="inputForm">
+        <div class="form-group">
+            <label for="usuarioMes1">Usuario mes 1:</label>
+            <input type="number" id="usuarioMes1" required>
+        </div>
+        <div class="form-group">
+            <label for="crecimiento">Crecimiento usuarios Mes a Mes (%):</label>
+            <input type="number" id="crecimiento" required>
+        </div>
+        <div class="form-group">
+            <label for="feeSimpleGo">Fee SimpleGo (%):</label>
+            <input type="number" id="feeSimpleGo" required>
+        </div>
+        <div class="form-group">
+            <label for="ticketPromedio">Ticket Promedio:</label>
+            <input type="number" id="ticketPromedio" required>
+        </div>
+        <button type="submit">Calculate</button>
+        <button id="downloadCSV">Download CSV</button>
+    </form>
+    <div id="investmentResults" hidden>
+        <p>Inversión primeros 6 meses: <span id="investment6Months"></span></p>
+        <p>Inversión primeros 12 meses: <span id="investment12Months"></span></p>
+    </div>
+    
+    <table id="resultsTable" hidden>
+        <thead>
+            <tr>
+                <th>Mes</th>
+                <th>Usuarios</th>
+                <th>Ingreso Bruto</th>
+                <th>SimpleGo Fee</th>
+            </tr>
+        </thead>
+        <tbody id="resultsBody">
+        </tbody>
+    </table>
+
+    <div id="investmentModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Investment Summary</h2>
+          <p id="investmentSummary"></p>
+        </div>
+      </div>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
