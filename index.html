@@ -29,10 +29,18 @@
         <button id="downloadCSV">Download CSV</button>
     </form>
     <div id="investmentResults" hidden>
-        <p>Inversión primeros 6 meses: <span id="investment6Months"></span></p>
-        <p>Inversión primeros 12 meses: <span id="investment12Months"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Period</th>
+                    <th>Ingreso Bruto</th>
+                    <th>Inversión</th>
+                </tr>
+            </thead>
+            <tbody id="investmentBody">
+            </tbody>
+        </table>
     </div>
-    
     <table id="resultsTable" hidden>
         <thead>
             <tr>
@@ -45,8 +53,6 @@
         <tbody id="resultsBody">
         </tbody>
     </table>
-    
-    
     <script src="script.js"></script>
 </body>
 </html>
