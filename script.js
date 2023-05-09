@@ -25,7 +25,7 @@ function calculateResults() {
     }
 
     displayResults(results);
-    displayInvestment(results);
+    displayInvestmentAndGrossIncome(results);
     enableDownloadCSV(results);
 }
 
@@ -57,12 +57,42 @@ function displayResults(results) {
     document.getElementById("resultsTable").hidden = false;
 }
 
-function displayInvestment(results) {
+function displayInvestmentAndGrossIncome(results) {
     let investment6Months = results.slice(0, 6).reduce((acc, result) => acc + result.simpleGoFee, 0);
     let investment12Months = results.reduce((acc, result) => acc + result.simpleGoFee, 0);
 
-    document.getElementById("investment6Months").textContent = `$${investment6Months}`;
-    document.getElementById("investment12Months").textContent = `$${investment12Months}`;
+    let grossIncome6Months = results.slice(0, 6).reduce((acc, result) => acc + result.ingresoBruto, 0);
+    let grossIncome12Months = results.reduce((acc, result) => acc + result.ingresoBruto, 0);
+
+    const investmentBody = document.getElementById("investmentBody");
+
+    while (investmentBody.firstChild) {
+        investmentBody.removeChild(investmentBody.firstChild);
+    }
+
+    const periodData = [
+        {
+            period: "First 6 months",
+            investment: investment6Months,
+            grossIncome: grossIncome6Months
+        },
+        {
+            period: "First 12 months",
+            investment: investment12Months,
+            grossIncome: grossIncome12Months
+        }
+    ];
+
+    periodData.forEach(data => {
+        let row = document.createElement("tr");
+        Object.values(data).forEach(value => {
+            let cell = document.createElement("td");
+            cell.textContent = typeof value === "number" ? `$${value}` : value;
+            row.appendChild(cell);
+        });
+        investmentBody.appendChild(row);
+    });
+
     document.getElementById("investmentResults").hidden = false;
 }
 
