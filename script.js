@@ -72,14 +72,14 @@ function displayInvestmentAndGrossIncome(results) {
 
     const periodData = [
         {
-            period: "First 6 months",
-            investment: investment6Months,
-            grossIncome: grossIncome6Months
+            period: "Primeros 6 meses",
+            grossIncome: grossIncome6Months,
+            investment: investment6Months
         },
         {
-            period: "First 12 months",
+            period: "Primeros 12 meses",
+            grossIncome: grossIncome12Months,
             investment: investment12Months,
-            grossIncome: grossIncome12Months
         }
     ];
 
