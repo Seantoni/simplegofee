@@ -28,7 +28,6 @@ function calculateResults() {
     displayInvestmentAndGrossIncome(results);
     enableDownloadCSV(results);
 }
-
 function displayResults(results) {
     const resultsBody = document.getElementById("resultsBody");
 
@@ -43,9 +42,9 @@ function displayResults(results) {
             let cell = document.createElement("td");
 
             if (index === 2 || index === 3) {
-                cell.textContent = `$${value}`;
+                cell.textContent = `$${value.toLocaleString()}`;
             } else {
-                cell.textContent = value;
+                cell.textContent = value.toLocaleString();
             }
 
             row.appendChild(cell);
@@ -87,7 +86,7 @@ function displayInvestmentAndGrossIncome(results) {
         let row = document.createElement("tr");
         Object.values(data).forEach(value => {
             let cell = document.createElement("td");
-            cell.textContent = typeof value === "number" ? `$${value}` : value;
+            cell.textContent = typeof value === "number" ? `$${value.toLocaleString()}` : value;
             row.appendChild(cell);
         });
         investmentBody.appendChild(row);
@@ -95,7 +94,6 @@ function displayInvestmentAndGrossIncome(results) {
 
     document.getElementById("investmentResults").hidden = false;
 }
-
 function enableDownloadCSV(results) {
     const downloadCSVButton = document.getElementById("downloadCSV");
     downloadCSVButton.hidden = false;
@@ -106,7 +104,7 @@ function downloadCSV(results) {
     let csvContent = "Mes,Usuarios,Ingreso Bruto,SimpleGo Fee\n";
 
     results.forEach(result => {
-        csvContent += `${result.mes},${result.usuarios},$${result.ingresoBruto},$${result.simpleGoFee}\n`;
+        csvContent += `${result.mes},${result.usuarios.toLocaleString()},$${result.ingresoBruto.toLocaleString()},$${result.simpleGoFee.toLocaleString()}\n`;
     });
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
