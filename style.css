@@ -12,6 +12,15 @@ body {
     align-items: center;
 }
 
+#logo {
+    display: block;
+    height: 100px;
+    width: 100%;
+    margin: 0 0 10px 0;
+    object-fit: contain;
+}
+
+
 .container {
     max-width: 800px;
     padding: 2rem;
@@ -56,7 +65,7 @@ input {
 }
 
 button {
-    background-color: #007aff;
+    background-color: #ff4420;
     border: none;
     color: white;
     padding: 12px 24px;
@@ -69,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: #005fbf;
+    background-color: #ab3017;
 }
 
 table {
@@ -114,3 +123,4 @@ th {
     color: #333;
     font-weight: bold;
 }
+
