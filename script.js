@@ -5,13 +5,17 @@ document.getElementById("inputForm").addEventListener("submit", function (event)
 
 function calculateResults() {
     const usuarioMes1 = parseInt(document.getElementById("usuarioMes1").value);
-    const crecimiento = parseFloat(document.getElementById("crecimiento").value) / 100;
+    let crecimiento = parseFloat(document.getElementById("crecimiento").value) / 100;
     const feeSimpleGo = parseFloat(document.getElementById("feeSimpleGo").value) / 100;
     const ticketPromedio = parseFloat(document.getElementById("ticketPromedio").value);
 
     let results = [];
 
     for (let i = 1; i <= 12; i++) {
+        if (i > 6) {
+            crecimiento = crecimiento * (1 - 0.03) ; 
+        }
+
         let usuarios = Math.floor(usuarioMes1 * Math.pow(1 + crecimiento, i - 1));
         let ingresoBruto = Math.floor(usuarios * ticketPromedio);
         let simpleGoFee = Math.floor(ingresoBruto * feeSimpleGo);
@@ -20,7 +24,8 @@ function calculateResults() {
             mes: i,
             usuarios: usuarios,
             ingresoBruto: ingresoBruto,
-            simpleGoFee: simpleGoFee
+            simpleGoFee: simpleGoFee,
+            crecimiento: crecimiento
         });
     }
 
@@ -28,6 +33,7 @@ function calculateResults() {
     displayInvestmentAndGrossIncome(results);
     enableDownloadCSV(results);
 }
+
 function displayResults(results) {
     const resultsBody = document.getElementById("resultsBody");
 
